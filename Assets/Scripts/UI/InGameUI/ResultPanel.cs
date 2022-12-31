@@ -29,6 +29,7 @@ public class ResultPanel : MonoBehaviour
     public void ShowSuccessResult(int score, int goalScore)
 	{
 		successFrame.SetActive(true);
+		GL.Clear(true, true, Color.black);
 		clearText.text = "Stage Clear";
 		SoundManager.Instance.Play("successClip");
 		StartCoroutine(ResultProcess(score, goalScore));
@@ -36,6 +37,7 @@ public class ResultPanel : MonoBehaviour
     public void ShowFailResult(int score)
 	{
 		failFrame.SetActive(true);
+		GL.Clear(true, true, Color.black);
 		clearText.text = "StageFail";
 		scoreText.text = score.ToString();
 		SoundManager.Instance.Play("failClip");
