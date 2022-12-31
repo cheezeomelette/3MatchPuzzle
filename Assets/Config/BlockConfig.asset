@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af2a71e447b81740b8da7660a9be057, type: 3}
+  m_Name: BlockConfig
+  m_EditorClassIdentifier: 
+  dropSpeed:
+  - 0.2
+  - 0.3
+  - 0.35
+  - 0.4
+  - 0.425
+  - 0.45
+  - 0.475
+  - 0.5
+  - 0.525
+  basicBlockSprites:
+  - {fileID: 21300000, guid: 51e2a399831333b478ec978ee598bf0e, type: 3}
+  - {fileID: 21300004, guid: 51e2a399831333b478ec978ee598bf0e, type: 3}
+  - {fileID: 21300008, guid: 51e2a399831333b478ec978ee598bf0e, type: 3}
+  - {fileID: 21300012, guid: 51e2a399831333b478ec978ee598bf0e, type: 3}
+  - {fileID: 21300016, guid: 51e2a399831333b478ec978ee598bf0e, type: 3}
+  circleBomeSprites:
+  - {fileID: 21300002, guid: eac7e1cdd756b32418e2d9afd6871172, type: 3}
+  - {fileID: 21300000, guid: eac7e1cdd756b32418e2d9afd6871172, type: 3}
+  - {fileID: 21300008, guid: eac7e1cdd756b32418e2d9afd6871172, type: 3}
+  - {fileID: 21300004, guid: eac7e1cdd756b32418e2d9afd6871172, type: 3}
+  - {fileID: 21300006, guid: eac7e1cdd756b32418e2d9afd6871172, type: 3}
+  horizontalBomeSprites:
+  - {fileID: 21300010, guid: eac7e1cdd756b32418e2d9afd6871172, type: 3}
+  - {fileID: 21300022, guid: eac7e1cdd756b32418e2d9afd6871172, type: 3}
+  - {fileID: 21300026, guid: eac7e1cdd756b32418e2d9afd6871172, type: 3}
+  - {fileID: 21300014, guid: eac7e1cdd756b32418e2d9afd6871172, type: 3}
+  - {fileID: 21300018, guid: eac7e1cdd756b32418e2d9afd6871172, type: 3}
+  verticalBomeSprites:
+  - {fileID: 21300012, guid: eac7e1cdd756b32418e2d9afd6871172, type: 3}
+  - {fileID: 21300024, guid: eac7e1cdd756b32418e2d9afd6871172, type: 3}
+  - {fileID: 21300028, guid: eac7e1cdd756b32418e2d9afd6871172, type: 3}
+  - {fileID: 21300016, guid: eac7e1cdd756b32418e2d9afd6871172, type: 3}
+  - {fileID: 21300020, guid: eac7e1cdd756b32418e2d9afd6871172, type: 3}
+  blockColors:
+  - {fileID: 3594784105838774525, guid: 3384404f7ff64684795ed7ebe11cdbef, type: 3}
+  - {fileID: 5730633744572405392, guid: f75ff6e117aa3da47bc83a649806fcc4, type: 3}
+  - {fileID: 7046854005510562476, guid: 1fc8a26329a51874998c97b52c839e7b, type: 3}
+  - {fileID: 394830011567465214, guid: 7ed801a969f63ba4da877cc1fcac7eb2, type: 3}
+  - {fileID: 4511124507777307936, guid: 265d91378bc56b44ca322c85d8cbcf84, type: 3}
+  razerBombSprite: {fileID: 21300000, guid: b2413575541cc41709a35579b4245591, type: 3}
