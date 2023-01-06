@@ -4,6 +4,7 @@
 
 목표 셀을 파괴하고 스테이지를 클리어하세요!
 
+<img src="3Match%20Puzzle%20072c9dcb68a24b0bb7181caf6a9965fd/KakaoTalk_20230102_005333556_01.jpg" width="200" height="400"/>
 ![KakaoTalk_20230102_005333556_01.jpg](3Match%20Puzzle%20072c9dcb68a24b0bb7181caf6a9965fd/KakaoTalk_20230102_005333556_01.jpg)
 
 ![KakaoTalk_20230102_005333556.jpg](3Match%20Puzzle%20072c9dcb68a24b0bb7181caf6a9965fd/KakaoTalk_20230102_005333556.jpg)
