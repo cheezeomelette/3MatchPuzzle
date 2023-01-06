@@ -105,7 +105,6 @@ public class Board : MonoBehaviour
 	// 매칭 검증
 	public IEnumerator Evaluate(Returnable<bool> matchResult)
 	{
-
 		if (mClickBlock != null)
 		{
 			// 레이저를 선택한 경우 레이저 이외의 블럭과 같은 종류의 블럭 전체 삭제
@@ -120,15 +119,7 @@ public class Board : MonoBehaviour
 				AddRainbowRange(mSwipeBlock, mClickBlock.breed);
 				Debug.Log($"rainbow * breed : {mClickBlock.breed}");
 			}
-
 		}
-
-
-		// 폭탄 조합을 사용했을 경우
-		// 가로 || 세로 + 가로 || 세로 => swipeBlock의 위치에서 가로 세로 블럭 클리어
-		// 가로 || 세로 + 폭탄 => swipeBlock의 위치에서 가로3줄 세로3줄 클리어
-		// 폭탄 + 폭탄 => 주변 4칸 블럭 클리어
-
 
 		// 모든블럭 매칭 상태 (3매칭 있으면 true)
 		bool bMatchBlockFound = UpdateAllBlocksMatchedStatus();
@@ -141,8 +132,6 @@ public class Board : MonoBehaviour
 
 			yield break;
 		}
-
-
 
 		// 블럭 강화
 		// 교차블럭검색 이후
@@ -179,13 +168,14 @@ public class Board : MonoBehaviour
 		{
 			// 첫블럭 계산 후 첫블럭 삭제
 			Block block = matchedBlocks.First();
-			//Debug.Log($"priority : {block.priority},  isMoved : {block.ismoved)
 			block.RepresentativeBlockEvaluate();
 			matchedBlocks.RemoveAt(0);
 		}
 
+		// 폭발범위에 블럭이 있다면
 		while (bombRangeBlocks.Count > 0)
 		{
+			// 블럭을 처리해준다
 			Block block = bombRangeBlocks.Dequeue();
 			block.DoEvaluation();
 		}
@@ -209,7 +199,7 @@ public class Board : MonoBehaviour
 		}
 
 		// 모든블럭 상태 초기화
-		ResetAllBlocks();
+		ResetAllBlocks(); 
 
 		// 효과음 초기화
 		finalClipName = "popSound";
@@ -261,9 +251,10 @@ public class Board : MonoBehaviour
 		return nCount > 0;
 	}
 
-	// 한 블럭에서 매칭검사
+	// 한 블럭에서 가로 세로 매칭검사
 	public bool EvalBlocksIfMatched(int nRow, int nCol, List<Block> matchedBlockList)
 	{
+		// 3개이상 연결되었으면 true 리턴
 		bool bFound = false;
 
 		// 기준 블럭
@@ -271,19 +262,20 @@ public class Board : MonoBehaviour
 		if (baseBlock == null)
 			return false;
 
-		// 매칭상태면 리턴
+		// 기준 블럭이 이미 검사해서 매칭상태거나 검사가 불가능한 상태면 리턴
 		if (baseBlock.match != MatchType.NONE || !baseBlock.IsValidate() || mCells[nRow, nCol].IsObstacle())
 			return false;
 
+		// 기준블럭을 매칭리스트에 추가하고 가로 세로 검사를 시작한다.
 		matchedBlockList.Add(baseBlock);
 
-		Block block;
 		// 가로 검사
 		bool isHorizon = true;
 
+		// 같은 종류의 블럭을 리스트에 추가해준다.
 		for (int i = nCol + 1; i < maxCol; i++)
 		{
-			block = mBlocks[nRow, i];
+			Block block = mBlocks[nRow, i];
 			if (!block.IsSafeEqual(baseBlock))
 				break;
 
@@ -291,28 +283,30 @@ public class Board : MonoBehaviour
 		}
 		for (int i = nCol - 1; i >= 0; i--)
 		{
-			block = mBlocks[nRow, i];
+			Block block = mBlocks[nRow, i];
 			if (!block.IsSafeEqual(baseBlock))
 				break;
 
 			matchedBlockList.Insert(0, block);
 		}
 
+		// 3개이상 연결되었으면 블럭 상태를 매치상태로 바꿔준다.
 		if (matchedBlockList.Count >= 3)
 		{
 			SetBlockStatusMatched(matchedBlockList, isHorizon);
 			bFound = true;
 		}
 
+		// 세로 검사를 하기위해 가로 검사때 썼던 리스트를 초기화한다.
 		matchedBlockList.Clear();
 
-		// 세로 검사
+		// 세로 검사(가로 검사와 동일한 과정)
 		isHorizon = false;
 		matchedBlockList.Add(baseBlock);
 
 		for (int i = nRow + 1; i < maxCol; i++)
 		{
-			block = mBlocks[i, nCol];
+			Block block = mBlocks[i, nCol];
 			if (!block.IsSafeEqual(baseBlock))
 				break;
 
@@ -321,7 +315,7 @@ public class Board : MonoBehaviour
 
 		for (int i = nRow - 1; i >= 0; i--)
 		{
-			block = mBlocks[i, nCol];
+			Block block = mBlocks[i, nCol];
 			if (!block.IsSafeEqual(baseBlock))
 				break;
 
@@ -335,11 +329,11 @@ public class Board : MonoBehaviour
 		}
 
 		matchedBlockList.Clear();
-
+		// 매칭된 블럭 여부를 리턴
 		return bFound;
 	}
 
-
+	// 폭발범위내의 블럭들을 bombRangeBlocks에 추가하는 함수.
 	public void AddBombRangeBlocks(int row, int col, BlockQuestType questType)
 	{
 		BlockPos[] explosionPositions = mBombDefine.GetBombRange(row, col, questType);
@@ -355,12 +349,10 @@ public class Board : MonoBehaviour
 				continue;
 			}
 			bombRangeBlocks.Enqueue(explosionBlock);
-			//Debug.Log($"[{explosionPos.y}, {explosionPos.x}]");
 		}
 		// 폭발범위의 블럭들 매칭상태로 변환
 		foreach (Block block in bombRangeBlocks)
 		{
-
 			block.UpdateBlockStatusBombMatched();
 		}
 	}

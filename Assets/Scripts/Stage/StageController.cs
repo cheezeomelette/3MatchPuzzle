@@ -21,7 +21,6 @@ public class StageController : MonoBehaviour
 	InputManager mInputManager;
 	ActionManager mActionManager;
 
-	bool mTouchDown;
 	BlockPos mBlockDownPos;
 	Vector3 mClickPos;
 
@@ -87,7 +86,6 @@ public class StageController : MonoBehaviour
 
 			if (mStage.IsOnValideBlock(point, out blockPos))
 			{
-				mTouchDown = true;
 				mBlockDownPos = blockPos;
 				mClickPos = point;
 			}
@@ -104,7 +102,6 @@ public class StageController : MonoBehaviour
 			if (swipeDir != Swipe.NA && mBlockDownPos.IsValidPos())
 				mActionManager.DoSwipeAction(mBlockDownPos.row, mBlockDownPos.col, swipeDir);
 
-			mTouchDown = false;
 		}
 
 		isFinished = mStage.IsFinishedGame();

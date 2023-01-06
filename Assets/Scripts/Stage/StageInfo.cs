@@ -16,24 +16,27 @@ public class StageInfo
 		return JsonUtility.ToJson(this);
 	}
 
+	// 저장된 셀타입을 리턴하는 함수
 	public CellType GetCellType(int nRow, int nCol)
 	{
 		Debug.Assert(cells != null && cells.Length > nRow * col + nCol, $"Invalid Row/Col = {nRow}, {nCol}");
 
+		// revisedRow == 좌측하단을 [0,0]으로 수정한row
 		int revisedRow = (row - 1) - nRow;
+		// [nRow,nCol] 의 셀이 cells에 내에 있으면 cells에 저장된 type을 리턴
 		if (cells.Length > revisedRow * col + nCol)
 			return (CellType)cells[revisedRow * col + nCol];
-
-		Debug.Assert(false);
 
 		return CellType.EMPTY;
 	}
 
+	// 유효한지 확인하는 함수
 	public bool DoValidation()
 	{
 		Debug.Assert(cells.Length == row * col);
 		Debug.Log($"cell length : {cells.Length}, row, col = ({row}, {col})");
 
+		// 셀이 행열의 곱과 갯수가 같으면 참
 		if (cells.Length != row * col)
 			return false;
 

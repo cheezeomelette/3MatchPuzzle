@@ -26,11 +26,14 @@ static class MatchTypeMethod
 		return (short)matchType;
 	}
 
+	// 교차블럭을 계산해주는 함수
 	public static MatchType Add(this MatchType matchTypeSrc, MatchType matchTypeTarget)
 	{
+		// 4*4블럭은 3*5와 숫자가 겹치기 때문에 예외처리
 		if (matchTypeSrc == MatchType.FOUR && matchTypeTarget == MatchType.FOUR)
 			return MatchType.FOUR_FOUR;
 
+		// 교차블럭 리턴
 		return (MatchType)((int)matchTypeSrc + (int)matchTypeTarget);
 	}
 }

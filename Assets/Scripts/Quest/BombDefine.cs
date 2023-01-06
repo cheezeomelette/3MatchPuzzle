@@ -59,19 +59,12 @@ public class BombDefine
 	{
 		List<BlockPos> explosionVec = new();
 		if(isHorizon)
-		{
 			for (int nCol = 0; nCol < maxCol; nCol++)
-			{
 				explosionVec.Add(new BlockPos(row, nCol));
-			}
-		}
 		else
-		{
 			for (int nRow = 0; nRow < maxRow; nRow++)
-			{
 				explosionVec.Add(new BlockPos(nRow, col));
-			}
-		}
+
 		return explosionVec.ToArray();
 	}
 

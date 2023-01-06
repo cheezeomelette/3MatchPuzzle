@@ -126,7 +126,7 @@ public class Block
 		mDurability		= 1;
 	}
 
-	internal Block InstantiateBlockObj(GameObject blockPrefab, Transform containerObj, Board board)
+	public Block InstantiateBlockObj(GameObject blockPrefab, Transform containerObj, Board board)
 	{
 		if (IsValidate() == false)
 			return null;
@@ -153,23 +153,22 @@ public class Block
 		blockBehaviour.transform.position = new Vector3(x, y, 0);
 	}
 
+	// 우선순위가 가장높은 블럭 승급
 	public void RepresentativeBlockEvaluate()
 	{
+		// 이미 검사한 블럭은 패스 (1번만 순회)
 		if (isEvaluated)
 			return;
-		//Debug.Log($"대표 계산 row : {mRow}, col : {mCol}");
-		// 블럭 계산
+
+		// 인접 블럭 검사
 		EvaluateAdjecentBlock();
-		// 계산 이후 폭탄으로 승급
+
+		// 계산 이후 3매치 이상 블럭 폭탄으로 승급
 		if ((int)match > (int)MatchType.THREE)
 		{
-			//Debug.Log($"upgrade Block [{row},{col}]  isMoved : {isMoved}");
 			ChangeBlockToBomb();
 			mBoard.GoalCheck(this);
 		}
-		//else
-			//Debug.Log($"drain Block [{row},{col}]  isMoved : {isMoved}");
-
 	}
 
 	// 기본 블럭은 클리어상태로 바꾸고 폭탄블럭은 보드에 폭탄범위 파괴 요청
@@ -197,6 +196,7 @@ public class Block
 				return true;
 			}
 
+			// 블럭의 내구도가 0이면 블럭을 클리어상태로 바꾼다.
 			if (mDurability <= 0)
 			{
 				status = BlockStatus.CLEAR;
@@ -204,41 +204,43 @@ public class Block
 			}
 		}
 
-		//status = BlockStatus.NORMAL;
-		//match = MatchType.NONE;
-
 		return false;
 	}
 
+	// 인접한 블록이 같은 종류일 때 매칭처리한다.
 	void EvaluateAdjecentBlock()
 	{
+		// 이미 검사한 블록은 패스 (1번만 순회)
 		if (isEvaluated)
 			return;
 		isEvaluated = true;
 		Debug.Log($"Block [{row},{col}]  isMoved : {isMoved}");
 
-
+		// 가로로 3매치이면 매칭처리
 		if (IsHorizontalMatched())
 		{
 			leftBlock.EvaluateAdjecentBlock();
 			rightBlock.EvaluateAdjecentBlock();
 		}
+		// 세로로 3매치면 매칭처리
 		if(IsVerticalMatched())
 		{
 			upBlock.EvaluateAdjecentBlock();
 			downBlock.EvaluateAdjecentBlock();
 		}
-
+		// 매칭처리함수
 		DoEvaluation();
 	}
 
-	// 매칭 시 
+	// 매칭 시 블럭의 매칭종류를 바꿔주는 함수(3, 3*3, 3*4...)
 	public void UpdateBlockStatusMatched(MatchType matchType, bool isHorizon)
 	{
+		// 블럭을 매칭상태로 바꿔준다
 		this.status = BlockStatus.MATCH;
 		mHorizonMatch = isHorizon || mHorizonMatch;	// 가로 매칭 상태
 		mVerticalMatch = !isHorizon || mVerticalMatch; // 세로 매칭 상태
 
+		// 매치타입이 없다면 그대로 대입하고 이미 있다면 교차블럭으로 더해준다.
 		if (match == MatchType.NONE)
 		{
 			match = matchType;
