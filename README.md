@@ -6,7 +6,6 @@
 
 <img src="3Match%20Puzzle%20072c9dcb68a24b0bb7181caf6a9965fd/KakaoTalk_20230102_005333556_01.jpg" width="400" height="800"/>
 <img src="3Match%20Puzzle%20072c9dcb68a24b0bb7181caf6a9965fd/KakaoTalk_20230102_005333556.jpg" width="400" height="800"/>
-![KakaoTalk_20230102_005333556.jpg](3Match%20Puzzle%20072c9dcb68a24b0bb7181caf6a9965fd/KakaoTalk_20230102_005333556.jpg)
 
 ## 🔁순서도
 
