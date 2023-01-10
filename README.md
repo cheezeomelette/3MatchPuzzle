@@ -4,18 +4,13 @@
 
 목표 셀을 파괴하고 스테이지를 클리어하세요!
 
-<<<<<<< HEAD
-<img src = "3Match%20Puzzle%20072c9dcb68a24b0bb7181caf6a9965fd/KakaoTalk_20230102_005333556_01.jpg" width= "400" height= "800" />
-< img src= "3Match%20Puzzle%20072c9dcb68a24b0bb7181caf6a9965fd/KakaoTalk_20230102_005333556.jpg" width= "400" height= "800" />
-=======
 <img src="3Match%20Puzzle%20072c9dcb68a24b0bb7181caf6a9965fd/KakaoTalk_20230102_005333556_01.jpg" width="400" height="800"/>
 <img src="3Match%20Puzzle%20072c9dcb68a24b0bb7181caf6a9965fd/KakaoTalk_20230102_005333556.jpg" width="400" height="800"/>
->>>>>>> 9e9fa9f4ce1f4d766910882cd13d25a88b3a2158
 
 ## 🔁순서도
 
 
-![제목 없는 다이어그램.drawio.png](3Match % 20Puzzle % 20072c9dcb68a24b0bb7181caf6a9965fd /% 25EC % 25A0 % 259C % 25EB % 25AA % 25A9_ % 25EC % 2597 % 2586 % 25EB % 258A % 2594_ % 25EB % 258B % 25A4 % 25EC % 259D % 25B4 % 25EC % 2596 % 25B4 % 25EA % 25B7 % 25B8 % 25EB % 259E % 25A8.drawio.png)
+![제목 없는 다이어그램.drawio.png](3Match%20Puzzle%20072c9dcb68a24b0bb7181caf6a9965fd/%25EC%25A0%259C%25EB%25AA%25A9_%25EC%2597%2586%25EB%258A%2594_%25EB%258B%25A4%25EC%259D%25B4%25EC%2596%25B4%25EA%25B7%25B8%25EB%259E%25A8.drawio.png)
 
 ## 💡 주요 기능
 
