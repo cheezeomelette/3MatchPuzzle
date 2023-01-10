@@ -39,8 +39,10 @@ public class BombDefine
 		maxCol = mBoard.maxCol;
 	}
 
+	// 폭탄 타입에 따라 폭발 범위를 리턴하는 함수
 	public BlockPos[] GetBombRange(int row, int col, BlockQuestType questType)
 	{
+		// 폭탄 타입에 따라서 다른 함수를 호출한다.
 		switch (questType)
 		{
 			case BlockQuestType.CLEAR_CIRCLE:
@@ -55,6 +57,7 @@ public class BombDefine
 		}
 	}
 
+	// 가로줄, 세로줄 범위 함수
 	private BlockPos[] GetLineRange(int row, int col, bool isHorizon)
 	{
 		List<BlockPos> explosionVec = new();
@@ -67,10 +70,13 @@ public class BombDefine
 
 		return explosionVec.ToArray();
 	}
-
+	
+	// 미리 정의된 범위를 입력받아서 폭발범위를 리턴하는 함수
 	private BlockPos[] ReturnList(int row, int col, BlockPos[] bombRange)
 	{
 		List<BlockPos> explosionVec = new();
+
+		// 미리 정의해둔 폭발범위를 폭탄위치를 기준으로 바꿔준다.
 		foreach(BlockPos pos in bombRange)
 		{
 			// 범위 내의 위치인지 체크
@@ -79,7 +85,7 @@ public class BombDefine
 				explosionVec.Add(new BlockPos(row + pos.row, col + pos.col));
 			}
 		}
-
+		// 폭발범위 리턴
 		return explosionVec.ToArray();
 	}
 }

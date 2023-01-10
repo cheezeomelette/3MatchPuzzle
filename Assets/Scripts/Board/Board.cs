@@ -336,9 +336,10 @@ public class Board : MonoBehaviour
 	// 폭발범위내의 블럭들을 bombRangeBlocks에 추가하는 함수.
 	public void AddBombRangeBlocks(int row, int col, BlockQuestType questType)
 	{
+		// 폭발 범위를 가져온다
 		BlockPos[] explosionPositions = mBombDefine.GetBombRange(row, col, questType);
 
-		// 폭발범위 블럭 추가
+		// 폭발범위의 블럭을 bombRangeBlocks에 추가
 		foreach (BlockPos explosionPos in explosionPositions)
 		{
 			Block explosionBlock = mBlocks[explosionPos.row, explosionPos.col];
@@ -350,7 +351,7 @@ public class Board : MonoBehaviour
 			}
 			bombRangeBlocks.Enqueue(explosionBlock);
 		}
-		// 폭발범위의 블럭들 매칭상태로 변환
+		// bombRangeBlocks의 블럭들 매칭상태로 변환
 		foreach (Block block in bombRangeBlocks)
 		{
 			block.UpdateBlockStatusBombMatched();

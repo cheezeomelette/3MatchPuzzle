@@ -251,17 +251,20 @@ public class Block
 		}
 	}
 
+	// 블럭을 폭탄으로 승급시켜주는 함수
 	public void ChangeBlockToBomb()
 	{
+		// 폭탄블럭의 성능이 좋은 순서대로 (무지개 폭탄 -> 주변 블럭 폭탄 -> 라인삭제 폭탄) 승급검사를 한다.
 		if (match == MatchType.THREE_FIVE || match == MatchType.FOUR_FIVE || match == MatchType.FIVE)
-			blockBehaviour.ChangeBlockQuestType(BlockQuestType.CLEAR_LAZER);       // 동일한 블럭 제거
+			blockBehaviour.ChangeBlockQuestType(BlockQuestType.CLEAR_LAZER);		// 동일한 종류의 블럭 모두 제거
 		else if (match == MatchType.THREE_FOUR || match == MatchType.THREE_THREE || match == MatchType.FOUR_FOUR)
-			blockBehaviour.ChangeBlockQuestType(BlockQuestType.CLEAR_CIRCLE);       // 주변폭발
+			blockBehaviour.ChangeBlockQuestType(BlockQuestType.CLEAR_CIRCLE);       // 주변 폭발
 		else if (mHorizonMatch && (match == MatchType.FOUR))
-			blockBehaviour.ChangeBlockQuestType(BlockQuestType.CLEAR_VERT);
+			blockBehaviour.ChangeBlockQuestType(BlockQuestType.CLEAR_VERT);			// 세로줄 폭발
 		else if (mVerticalMatch && (match == MatchType.FOUR))
-			blockBehaviour.ChangeBlockQuestType(BlockQuestType.CLEAR_HORZ);
+			blockBehaviour.ChangeBlockQuestType(BlockQuestType.CLEAR_HORZ);			// 가로줄 폭발
 
+		// 매칭상태에서 기본 상태로 바꿔준다.
 		isEvaluated = false;
 		status = BlockStatus.NORMAL;
 		match = MatchType.NONE;
