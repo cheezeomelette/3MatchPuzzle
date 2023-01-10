@@ -4,8 +4,13 @@
 
 목표 셀을 파괴하고 스테이지를 클리어하세요!
 
+<<<<<<< HEAD
 <img src = "3Match%20Puzzle%20072c9dcb68a24b0bb7181caf6a9965fd/KakaoTalk_20230102_005333556_01.jpg" width= "400" height= "800" />
 < img src= "3Match%20Puzzle%20072c9dcb68a24b0bb7181caf6a9965fd/KakaoTalk_20230102_005333556.jpg" width= "400" height= "800" />
+=======
+<img src="3Match%20Puzzle%20072c9dcb68a24b0bb7181caf6a9965fd/KakaoTalk_20230102_005333556_01.jpg" width="400" height="800"/>
+<img src="3Match%20Puzzle%20072c9dcb68a24b0bb7181caf6a9965fd/KakaoTalk_20230102_005333556.jpg" width="400" height="800"/>
+>>>>>>> 9e9fa9f4ce1f4d766910882cd13d25a88b3a2158
 
 ## 🔁순서도
 
