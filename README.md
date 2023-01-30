@@ -67,7 +67,7 @@ public class StageInfo
 
 ### 🛠️스테이지 생성
 
--StageReader를 통해서 Json형태의 파일을 StageInfo로 가져와서 스테이지를 생성한다.
+- StageReader를 통해서 Json형태의 파일을 StageInfo로 가져와서 스테이지를 생성한다.
 - StageInfo의 셀정보에 맞게 SpawnBlock을 통해 랜덤한 블럭을 생성한다.
 
 ```csharp
@@ -151,7 +151,7 @@ public static Block SpawnBlock(BlockType blockType)
 
 ### 🔎블럭 매칭 검사
 
--블럭 처리 순서(NORMAL → MATCH → CLEAR)
+- 블럭 처리 순서(NORMAL → MATCH → CLEAR)
 
 ```csharp
 // 블럭 매칭 상태
@@ -163,7 +163,7 @@ public enum BlockStatus
 }
 ```
 
--스왑한 블럭중 무지개블럭이 있다면 같은색의 블럭을 제거하는 처리를 먼저 한다.
+- 스왑한 블럭중 무지개블럭이 있다면 같은색의 블럭을 제거하는 처리를 먼저 한다.
 - 블럭을 스왑한 이후 UpdateAllBlocksMatchedStatus 함수를 통해 모든 블럭의 매칭상태를 검사한다.
 
 ```csharp
@@ -290,7 +290,7 @@ public IEnumerator Evaluate(Returnable<bool> matchResult)
 }
 ```
 
--모든 블럭을 검사할 때 EvalBlocksIfMatched 함수를 사용해 한 블럭의 가로 세로 매칭상태를 검사한다.
+- 모든 블럭을 검사할 때 EvalBlocksIfMatched 함수를 사용해 한 블럭의 가로 세로 매칭상태를 검사한다.
 
 ```csharp
 // 모든 블럭매치상태 검사(매칭된 Block의 status를 match로 바꿈)
@@ -320,7 +320,7 @@ public bool UpdateAllBlocksMatchedStatus()
 }
 ```
 
--같은 종류의 블럭이 3개이상 연결되었으면 UpdateBlockStatusMatched 함수를 통해 매칭 타입을 정해준다.
+- 같은 종류의 블럭이 3개이상 연결되었으면 UpdateBlockStatusMatched 함수를 통해 매칭 타입을 정해준다.
 
 ```csharp
 // 한 블럭에서 가로 세로 매칭검사
@@ -406,7 +406,7 @@ public bool EvalBlocksIfMatched(int nRow, int nCol, List<Block> matchedBlockList
 }
 ```
 
--블럭의 매칭상태를 바꿔준다.
+- 블럭의 매칭상태를 바꿔준다.
 
 ```csharp
 // 매칭 시 블럭의 매칭종류를 바꿔주는 함수(3, 3*3, 3*4...)
@@ -459,7 +459,7 @@ public static MatchType Add(this MatchType matchTypeSrc, MatchType matchTypeTarg
 
 ### 💣폭탄블럭 승급
 
--Evaluate함수의 일부이다.
+- Evaluate함수의 일부이다.
 - 블럭의 매칭상태를 업데이트한 이후 블럭의 우선순위를 업데이트한다.
 - 매칭된 블럭을 우선순위대로  정렬하고 정렬된 순서대로 RepresentativeBlockEvaluate함수를 사용해 블럭을 클리어 처리한다.
 - 정렬하는 이유는 폭탄블럭으로 승급할 때 움직인 블럭을 우선으로 승급시키기 위해서다.
@@ -505,7 +505,7 @@ while (matchedBlocks.Count > 0)
 }
 ```
 
--BFS방식으로 우선순위가 가장 높은 블럭부터 인접한  블럭을 순회하여 매칭처리한다.
+- 재귀함수를 사용해서 우선순위가 가장 높은 블럭부터 인접한  블럭을 순회하여 매칭처리한다.
 - 4개 이상의 블럭이 같은종류일 경우에 블럭들 모두 MatchType이 4이상으로 되어있기 때문에 그 블럭들 중 우선순위가 높은 한 블럭만 폭탄블럭으로 승급시키기 위해 BFS 방식을 사용했다.
 - 3개 초과의 블럭이 연결된 상태이면 폭탄블럭으로 승급시킨다.
 
@@ -556,7 +556,7 @@ void EvaluateAdjecentBlock()
 }
 ```
 
--블럭을 매칭된 상태에 따라 승급 시켜주고 매치 가능한 상태로 바꿔준다.
+- 블럭을 매칭된 상태에 따라 승급 시켜주고 매치 가능한 상태로 바꿔준다.
 
 ```csharp
 // 블럭을 폭탄으로 승급시켜주는 함수
@@ -581,7 +581,7 @@ public void ChangeBlockToBomb()
 
 ### 🌟블럭 처리 (+ 폭탄블럭 처리)
 
--매치 상태인 블럭을 처리하는 함수이다
+- 매치 상태인 블럭을 처리하는 함수이다
 - 블럭이 폭탄 블럭일 경우 폭발범위의 블럭을 추가하는 AddBombRangeBlocks 함수를 실행한다.
 
 ```csharp
@@ -622,7 +622,7 @@ public bool DoEvaluation()
 }
 ```
 
--폭발범위의 위치정보를 가져와서 위치에 있는 블럭들을 매치상태로 바꿔주는함수
+- 폭발범위의 위치정보를 가져와서 위치에 있는 블럭들을 매치상태로 바꿔주는함수
 
 ```csharp
 // 폭발범위내의 블럭들을 bombRangeBlocks에 추가하는 함수.
@@ -651,7 +651,7 @@ public void AddBombRangeBlocks(int row, int col, BlockQuestType questType)
 }
 ```
 
--폭탄 타입과 위치에 따라 폭발범위를 리턴하는 함수
+- 폭탄 타입과 위치에 따라 폭발범위를 리턴하는 함수
 
 ```csharp
 // 폭탄 타입에 따라 폭발 범위를 리턴하는 함수
@@ -673,7 +673,7 @@ public BlockPos[] GetBombRange(int row, int col, BlockQuestType questType)
 }
 ```
 
--폭발범위를 리턴해주는 함수
+- 폭발범위를 리턴해주는 함수
 
 ```csharp
 // 가로줄, 세로줄 범위 함수
